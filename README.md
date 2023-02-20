@@ -17,6 +17,7 @@ Here's what I'm thinking (using the standard Greek alphabest ΑΒΓΔΕΙΖΗΘ�
     - bit 6 clear -> punctuation and control codes: (apostrophe,dot + comma,semicolon) + (quote,space + newline,gap)
 - lower-order bits interpreted as follows:
   - bits 3, 4, and 5 select within these sets according to the groupings indicated above
+    - In each case, a set bit selects the first element of a grouping and a clear bit selects the second.  Thus, for example, Upsilon, being the second member of the second minor grouping of the second major grouping within the "vowels and rho" category, would have all 3 of these bits clear (but 6 and 7 set, so it starts with 11000).
   - bit 2 -> normally set; clear may indicate various things such as characters that are rendered as digamma in some transcriptions
   - bit 1 -> normally set; clear indicates hypothesized text not present in actual fragment
   - bit 0 -> normally set; clear indicates a letter usually capitalized in modern renderings

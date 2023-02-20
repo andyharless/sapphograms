@@ -75,11 +75,11 @@ tau     = 0100 0111 = 0x47
 so the first line `gap, dot, nu, dot, space, omicron, dot, gap, newline` translates into hexadecimal as `87 B7 17 B7 97 D7 B7 87 8F` and into RGB pixels as `87B717 B797D7 B7878F`,
 and the full passage transaltes into pixels as follows:
 ```
-87B717 B797D7 B7878F 87E71F 2FB787 8F87E4 4727CF 9707D7 B7878F 87B797 17DF2F 878f87
+87B717 B797D7 B7878F 87E71F 2FB787 8F87E4 4727CF 9707D7 B7878F 87B797 17DF2F 878F87
 ```
 Conveniently, no padding is necessary, and it can be arranged in a 4x3 rectangle:
 ```
 87B717 B797D7 B7878F 87E71F 
 2FB787 8F87E4 4727CF 9707D7 
-B7878F 87B797 17DF2F 878f87
+B7878F 87B797 17DF2F 878F87
 ```

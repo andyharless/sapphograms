@@ -20,8 +20,10 @@ Here's what I'm thinking (using the standard Greek alphabest ΑΒΓΔΕΙΖΗΘ�
   - bit 2 -> normally set; clear may indicate various things such as characters that are rendered as digamma in some transcriptions
   - bit 1 -> normally set; clear indicates hypothesized text not present in actual fragment
   - bit 0 -> normally set; clear indicates a letter usually capitalized in modern renderings
+- Ignore accent and voicing marks (the latter always smooth in Sappho anyhow AFAIK).
 - Since the length of the lyric/fragment may not be a multiple of 3, the final pixel is padded with spaces if necessary.
 - Aspect ratio of the final Sapphogram is between 2:1 and 1:1 (inclusive).
 - Pixels are arranged left-to-right top-to-bottom in a rectangle, with black pixels padding the upper left and lower right as necessary to accommodate texts that don't fit in a rectangle (which will likely be the usual case, I think).
 - Black padding pixels to be distributed as evenly as possible between upper left and lower right, with preference to the lower right.
 - Subject to the aspect ratio constraint, minimize the number of black padding pixels necessary to accommodate a text.
+- Magnify the results as appropriate using squares of identical pixels to represent single pixels from the raw result.

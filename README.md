@@ -83,3 +83,19 @@ Conveniently, no padding is necessary, and it can be arranged in a 4x3 rectangle
 2FB787 8F87E4 4727CF 9707D7 
 B7878F 87B797 17DF2F 878F87
 ```
+which I easily rendered using the Python command line with a few run-of-the-mill libraries:
+``` 
+Python 3.10.6 (main, Nov 14 2022, 16:10:14) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from PIL import Image
+>>> import numpy as np
+>>> a = np.array([[(0x87,0xb7,0x17), (0xB7,0x97,0xD7), (0xB7,0x87,0x8F), (0x87,0xE7,0x1F)],
+... [(0x2F,0xB7,0x87), (0x8F,0x87,0xE4), (0x47,0x27,0xCF), (0x97,0x07,0xD7)],
+... [(0xB7,0x87,0x8F),  (0x87,0xB7,0x97),  (0x17,0xDF,0x2F),  (0x87,0x8f,0x87)]]
+... )
+>>> im = Image.fromarray(a.astype(np.uint8), 'RGB')
+>>> im.save('sappho8v0small.png')
+>>> im_large = im.resize((400,300), resample=Image.NEAREST)
+>>> im_large.save('sappho8v0large.png')
+```
+![sappho8v0large](https://user-images.githubusercontent.com/25837203/220214919-2a364480-f3c7-43cf-bdb4-fdb73de701ff.png)

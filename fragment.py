@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image
-
+from math import sqrt, floor, ceil
 
 ACCENT_REMOVALS = {
                   'Ἄ':'Α', 
@@ -121,7 +121,27 @@ def read_fragment(fp):
     return result
     
 def best_aspect(array_length):
-    return 4, 3
+    '''
+    Get pixel dimensions for an aspect ratio between 2:1 and 1:1 (inclusive)
+    that is a best fit for the total number of pixels to accommodate
+    '''
+    minwidth = ceil(sqrt(array_length))
+    maxwidth = floor(sqrt(2*array_length))
+
+    # First be optimistic and look for a perfect fit
+    for w in range(minwidth, maxwidth+1):
+        if not array_length % w:
+            return(w, array_length // w, 0)
+
+    best = (None, None, None)
+    best_npad = 99999
+    for w in range(minwidth, maxwidth+1):
+        h = ceil(array_length / w)
+        npad = h * w - array_length
+        if npad < best_npad:
+            best = (w, h, npad)
+            best_npad = npad
+    return best
 
 def create_sapphogram(fp):
 
@@ -140,7 +160,14 @@ def create_sapphogram(fp):
         pixels.append([int(i) for i in data[i:i+3]])
        
     #  Reshape pixels into a rectangle
-    width, height = best_aspect(len(pixels))
+    width, height, padding = best_aspect(len(pixels))
+    if not width:
+        raise ValueError('Cannot find acceptable dimensions')
+    start_pad = padding // 2
+    end_pad = padding - start_pad
+    black = [0,0,0]
+    pixels = [black]*start_pad + pixels + [black]*end_pad
+    
     channels = 3
     a = np.array(pixels).reshape(height, width, channels)
     
@@ -148,11 +175,8 @@ def create_sapphogram(fp):
     return Image.fromarray(a.astype(np.uint8), 'RGB')
 
 if __name__=='__main__':
-    im = create_sapphogram('data/fragment8_simplified.txt')
-    im.save('output/sappho8v1small.png')
-    im_large = im.resize((400,300), resample=Image.NEAREST)
-    im_large.save('output/sappho8v1large.png')        
+    im = create_sapphogram('data/fragment8.txt')
+    im.save('output/sappho8v2small.png')
+    im_large = im.resize((500,300), resample=Image.NEAREST)
+    im_large.save('output/sappho8v2large.png')
     
-    print(np.vectorize(hex)(pixels))
-    
-

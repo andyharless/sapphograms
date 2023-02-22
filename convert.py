@@ -2,13 +2,13 @@ def read_fragment(fp):
     '''Read a Sappho fragment and convert to Sapphogram sequence
     '''
 
-    CHAR_ARRAY = 'ΣΛΝΜΦΘΧΖΤΔΚΓΨΞΠΒ[\n ";,.\'ΥΙΟΕΡΑΩΗ'
+    CHAR_ARRAY = 'ΣΛΝΜΦΘΧΖΤΔΚΓΨΞΠΒ&\n ";,.\'ΥΙΟΕΡΑΩΗ'
 
     with open(fp) as f:
-      chars = f.read()
+      chars = f.read().replace('[', '&')
 
     result = b''
-    lastchar = '&'  # initialize to nonexistent character
+    lastchar = '$'  # initialize to nonexistent character
 
     for c in chars:
   
@@ -17,7 +17,7 @@ def read_fragment(fp):
         strange = False       # code for bit 2
 
         cap = c.isupper()
-        c = '[' if c==']' else c.upper()
+        c = '&' if c==']' else c.upper()
         if c in CHAR_ARRAY and not (c == lastchar == ' '):
             lastchar = c
             n = CHAR_ARRAY.index(c)

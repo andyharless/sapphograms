@@ -31,10 +31,12 @@ def deal_with_gaps(s):
         if close_bracket_found and not open_bracket_found:
             # Close bracket shows a gap at start of line
             # Mark all prior characters as hypothetical
-            for j in range(i):
+            # and shift them forward so they appear after gap
+            for j in range(i,0,-1):
+                outc[j] = outc[j-1]
                 hypothetical[j] = True
-            # Indicate a gap
-            outc[i] = '&'
+            # Indicate a gap at the beginning of the line
+            outc[0] = '&'
             # Reset gap tracker since next characters will be actual
             close_bracket_found = False
         elif open_bracket_found and not close_bracket_found:

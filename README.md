@@ -61,7 +61,9 @@ vowels:
 omicron = 1101 0111 = 0xD7
 epsilon = 1101 1111 = 0xDF
 alpha   = 1110 0111 = 0xE7
+  [THIS IS WRONG. ALPHA is 0xEF]
 alpha*  = 1110 0100 = 0xE4 (capitalized and hypothetical)
+  [THIS IS WRONG. ALPHA* is 0xEC]
 ```
 ```
 consonants:
@@ -70,6 +72,7 @@ nu      = 0001 0111 = 0x17
 sigma   = 0000 0111 = 0x07
 phi     = 0010 1111 = 0x2F
 theta   = 0010 0111 = 0x27
+  [THESE ARE WRONG. PHI and THETA are reversed]
 tau     = 0100 0111 = 0x47
 ```
 so the first line `gap, dot, nu, dot, space, omicron, dot, gap, newline` translates into hexadecimal as `87 B7 17 B7 97 D7 B7 87 8F` and into RGB pixels as `87B717 B797D7 B7878F`,
@@ -79,9 +82,9 @@ and the full passage transaltes into pixels as follows:
 ```
 Conveniently, no padding is necessary, and it can be arranged in a 4x3 rectangle:
 ```
-87B717 B797D7 B7878F 87E71F 
-2FB787 8F87E4 4727CF 9707D7 
-B7878F 87B797 17DF2F 878F87
+87B717 B797D7 B7878F 87E71F  [The last pixel of this row is wrong because of alpha.]
+2FB787 8F87E4 4727CF 9707D7  [The first 3 pixels of this row are wrong because of phi, theta, alpha.]
+B7878F 87B797 17DF2F 878F87  [The 3rd pixel of this row is wrong because of phi/theta.]
 ```
 which I easily rendered using the Python command line with a few run-of-the-mill libraries:
 ``` 
@@ -99,3 +102,5 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> im_large.save('sappho8v0large.png')
 ```
 ![sappho8v0large](https://user-images.githubusercontent.com/25837203/220214919-2a364480-f3c7-43cf-bdb4-fdb73de701ff.png)
+
+*BUT...as noted above, several of those pixels are wrong....so this will have to be corrected.*

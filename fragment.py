@@ -1,3 +1,7 @@
+import numpy as np
+from PIL import Image
+
+
 ACCENT_REMOVALS = {
                   'Ἄ':'Α', 
                   'έ':'ε',
@@ -115,7 +119,40 @@ def read_fragment(fp):
             result += bytes([n])
         
     return result
-        
+    
+def best_aspect(array_length):
+    return 4, 3
+
+def create_sapphogram(fp):
+
+    #  Read and convert the data
+    data = read_fragment(fp)
+    
+    #  Pad final pixel if necessary
+    if len(data) % 3:
+        padding = (len(data) // 3 + 1) - len(data)
+        data += bytes([0x97] * padding)
+    assert not len(data) % 3
+    
+    #  Convert pixels to numeric form
+    pixels = []
+    for i in range(0, len(data), 3):
+        pixels.append([int(i) for i in data[i:i+3]])
+       
+    #  Reshape pixels into a rectangle
+    width, height = best_aspect(len(pixels))
+    channels = 3
+    a = np.array(pixels).reshape(height, width, channels)
+    
+    # Create a picture
+    return Image.fromarray(a.astype(np.uint8), 'RGB')
+
 if __name__=='__main__':
-    print(bytes(read_fragment('data/fragment8_simplified.txt')))
+    im = create_sapphogram('data/fragment8_simplified.txt')
+    im.save('output/sappho8v1small.png')
+    im_large = im.resize((400,300), resample=Image.NEAREST)
+    im_large.save('output/sappho8v1large.png')        
+    
+    print(np.vectorize(hex)(pixels))
+    
 

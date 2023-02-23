@@ -4,13 +4,15 @@ Visual Encodings of Sappho Lyrics/Fragments
 
 ([Link to original README, which describes the creation of Sapphogram 0](original_readme.md))
 
+
 The idea is discussed in [this Twitter thread](https://twitter.com/AndyHarless/status/1627705276336857088).
 
 
 
 
-Procedure for generating a Sapphogram (using the standard Greek alphabest ΑΒΓΔΕΙΖΗΘΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ):
-- Start with the Greek text of a Sappho lyric or fragment (e.g., from [The Digital Sappho](https://digitalsappho.org/).
+### Procedure for generating a Sapphogram
+#### (using the standard Greek alphabest ΑΒΓΔΕΙΖΗΘΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ):
+- Start with the Greek text of a Sappho lyric or fragment (e.g., from [The Digital Sappho](https://digitalsappho.org/)).
 - Each character or conrol code (e.g. "gap" code meaning there is a gap in the fragment) is represented by one channel (i.e., one byte) of an RGB pixel, so each pixel represents three consecutive letters/codes.
 - higher-order bits interpreted as follows:
   - bit 7 clear -> consonants (except rho):  ΒΓΔΖΘΚΛΜΝΞΠΣΤΦΧΨ
@@ -65,9 +67,7 @@ vowels:
 omicron = 1101 0111 = 0xD7
 epsilon = 1101 1111 = 0xDF
 alpha   = 1110 0111 = 0xEF
-  [WRONG ALPHA was 0xE7]
 alpha*  = 1110 0100 = 0xEC (capitalized and hypothetical)
-  [WRONG ALPHA* was 0xE4]
 ```
 ```
 consonants:
@@ -76,10 +76,8 @@ nu      = 0001 0111 = 0x17
 sigma   = 0000 0111 = 0x07
 phi     = 0010 1111 = 0x27
 theta   = 0010 0111 = 0x2F
-  [THESE WERE WRONG. PHI and THETA were reversed]
 tau     = 0100 0111 = 0x47
 ```
-![sappho8v1large](https://user-images.githubusercontent.com/25837203/220943303-284dd663-161f-4408-bee1-1461b933275e.png)
 so the first line `gap, dot, nu, dot, space, omicron, dot, gap, newline` translates into hexadecimal as `87 B7 17 B7 97 D7 B7 87 8F` and into RGB pixels as `87B717 B797D7 B7878F`,
 and the full passage transaltes into pixels as follows:
 ```
@@ -102,9 +100,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 ... [(0xB7,0x87,0x8F),  (0x87,0xB7,0x97),  (0x17,0xDF,0x2F),  (0x87,0x8f,0x87)]]
 ... )
 >>> im = Image.fromarray(a.astype(np.uint8), 'RGB')
->>> im.save('sappho8v0small.png')
+>>> im.save('sappho8v1small.png')
 >>> im_large = im.resize((400,300), resample=Image.NEAREST)
->>> im_large.save('sappho8v0large.png')
+>>> im_large.save('sappho8v1large.png')
 ```
 ![sappho8v1large](https://user-images.githubusercontent.com/25837203/220943400-fec4abbb-0390-43eb-b745-bb7e133d786f.png)
 

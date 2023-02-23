@@ -35,6 +35,8 @@ The idea is discussed in [this Twitter thread](https://twitter.com/AndyHarless/s
 - Subject to the aspect ratio constraint, minimize the number of black padding pixels necessary to accommodate a text.
 - Magnify the results as appropriate using squares of identical pixels to represent single pixels from the raw result.
 
+The procedure is implemented in `fragments.py`
+
 
 ### For example:
 
@@ -66,16 +68,16 @@ space   = 1001 0111 = 0x97
 vowels:
 omicron = 1101 0111 = 0xD7
 epsilon = 1101 1111 = 0xDF
-alpha   = 1110 0111 = 0xEF
-alpha*  = 1110 0100 = 0xEC (capitalized and hypothetical)
+alpha   = 1110 1111 = 0xEF
+alpha*  = 1110 1100 = 0xEC (capitalized and hypothetical)
 ```
 ```
 consonants:
 mu      = 0001 1111 = 0x1F
 nu      = 0001 0111 = 0x17
 sigma   = 0000 0111 = 0x07
-phi     = 0010 1111 = 0x27
-theta   = 0010 0111 = 0x2F
+phi     = 0010 0111 = 0x27
+theta   = 0010 1111 = 0x2F
 tau     = 0100 0111 = 0x47
 ```
 so the first line `gap, dot, nu, dot, space, omicron, dot, gap, newline` translates into hexadecimal as `87 B7 17 B7 97 D7 B7 87 8F` and into RGB pixels as `87B717 B797D7 B7878F`,

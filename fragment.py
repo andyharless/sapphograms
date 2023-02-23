@@ -3,8 +3,14 @@ from PIL import Image
 from math import sqrt, floor, ceil
 
 ACCENT_REMOVALS = {
-                  'Ἄ':'Α', 
-                  'έ':'ε',
+                  'Ἄ': 'Α', 
+                  'έ': 'ε',
+                  'Ἔ': 'Ε',
+                  '᾿': "'",
+                  'ἐ': 'ε',
+                  'ί': 'ι',
+                  'έ': 'ε',
+                  'ύ': 'υ'
                   }
                   
 def replace_by_dict(s, d):
@@ -150,7 +156,7 @@ def create_sapphogram(fp):
     
     #  Pad final pixel if necessary
     if len(data) % 3:
-        padding = (len(data) // 3 + 1) - len(data)
+        padding = 3 * (len(data) // 3 + 1) - len(data)
         data += bytes([0x97] * padding)
     assert not len(data) % 3
     

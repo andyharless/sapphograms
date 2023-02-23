@@ -1,12 +1,16 @@
 # Sapphograms
 Visual Encodings of Sappho Lyrics/Fragments
 
-The idea is discussed in [this Twitter thread](https://twitter.com/AndyHarless/status/1627705276336857088).  *On va voir ce qui se passera*.
+
+([Link to original README, which describes the creation of Sapphogram 0](original_readme.md))
+
+The idea is discussed in [this Twitter thread](https://twitter.com/AndyHarless/status/1627705276336857088).
 
 
 
 
-Here's what I'm thinking (using the standard Greek alphabest ΑΒΓΔΕΙΖΗΘΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ):
+Procedure for generating a Sapphogram (using the standard Greek alphabest ΑΒΓΔΕΙΖΗΘΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ):
+- Start with the Greek text of a Sappho lyric or fragment (e.g., from [The Digital Sappho](https://digitalsappho.org/).
 - Each character or conrol code (e.g. "gap" code meaning there is a gap in the fragment) is represented by one channel (i.e., one byte) of an RGB pixel, so each pixel represents three consecutive letters/codes.
 - higher-order bits interpreted as follows:
   - bit 7 clear -> consonants (except rho):  ΒΓΔΖΘΚΛΜΝΞΠΣΤΦΧΨ
@@ -40,7 +44,7 @@ Sappho's Fragment 8 is reprsented thus at [The Digital Sappho](https://digitalsa
    ]. νέφ[
        ]     [
 ```
-Reading this line by line, I get (ignoring a space in the first line that wasn't evident in the browser rendering of the site):
+(The whitespace has been slightly modified from the version at Digital Sappho, and, as regards whitespace and such, my interpreation here is slightly different than what you will get from reading the characters digitally in sequence.)  Reading this line by line, I get:
 ```
 gap, dot, nu, dot, space, omicron, dot, gap, newline
 gap, alpha, mu, phi, dot, gap, newline
@@ -60,31 +64,31 @@ space   = 1001 0111 = 0x97
 vowels:
 omicron = 1101 0111 = 0xD7
 epsilon = 1101 1111 = 0xDF
-alpha   = 1110 0111 = 0xE7
-  [THIS IS WRONG. ALPHA is 0xEF]
-alpha*  = 1110 0100 = 0xE4 (capitalized and hypothetical)
-  [THIS IS WRONG. ALPHA* is 0xEC]
+alpha   = 1110 0111 = 0xEF
+  [WRONG ALPHA was 0xE7]
+alpha*  = 1110 0100 = 0xEC (capitalized and hypothetical)
+  [WRONG ALPHA* was 0xE4]
 ```
 ```
 consonants:
 mu      = 0001 1111 = 0x1F
 nu      = 0001 0111 = 0x17
 sigma   = 0000 0111 = 0x07
-phi     = 0010 1111 = 0x2F
-theta   = 0010 0111 = 0x27
-  [THESE ARE WRONG. PHI and THETA are reversed]
+phi     = 0010 1111 = 0x27
+theta   = 0010 0111 = 0x2F
+  [THESE WERE WRONG. PHI and THETA were reversed]
 tau     = 0100 0111 = 0x47
-```
+```of
 so the first line `gap, dot, nu, dot, space, omicron, dot, gap, newline` translates into hexadecimal as `87 B7 17 B7 97 D7 B7 87 8F` and into RGB pixels as `87B717 B797D7 B7878F`,
 and the full passage transaltes into pixels as follows:
 ```
-87B717 B797D7 B7878F 87E71F 2FB787 8F87E4 4727CF 9707D7 B7878F 87B797 17DF2F 878F87
+87B717 B797D7 B7878F 87EF1F 27B787 8F87EC 472FCF 9707D7 B7878F 87B797 17DF27 878F87
 ```
 Conveniently, no padding is necessary, and it can be arranged in a 4x3 rectangle:
 ```
-87B717 B797D7 B7878F 87E71F  [The last pixel of this row is wrong because of alpha.]
-2FB787 8F87E4 4727CF 9707D7  [The first 3 pixels of this row are wrong because of phi, theta, alpha.]
-B7878F 87B797 17DF2F 878F87  [The 3rd pixel of this row is wrong because of phi/theta.]
+87B717 B797D7 B7878F 87EF1F 
+27B787 8F87EC 472FCF 9707D7 
+B7878F 87B797 17DF27 878F87
 ```
 which I easily rendered using the Python command line with a few run-of-the-mill libraries:
 ``` 
@@ -101,6 +105,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> im_large = im.resize((400,300), resample=Image.NEAREST)
 >>> im_large.save('sappho8v0large.png')
 ```
-![sappho8v0large](https://user-images.githubusercontent.com/25837203/220214919-2a364480-f3c7-43cf-bdb4-fdb73de701ff.png)
-
-*BUT...as noted above, several of those pixels are wrong....so this will have to be corrected.*
+![sappho8v0large]()

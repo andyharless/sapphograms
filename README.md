@@ -78,7 +78,8 @@ phi     = 0010 1111 = 0x27
 theta   = 0010 0111 = 0x2F
   [THESE WERE WRONG. PHI and THETA were reversed]
 tau     = 0100 0111 = 0x47
-```of
+```
+![sappho8v1large](https://user-images.githubusercontent.com/25837203/220943303-284dd663-161f-4408-bee1-1461b933275e.png)
 so the first line `gap, dot, nu, dot, space, omicron, dot, gap, newline` translates into hexadecimal as `87 B7 17 B7 97 D7 B7 87 8F` and into RGB pixels as `87B717 B797D7 B7878F`,
 and the full passage transaltes into pixels as follows:
 ```
@@ -105,4 +106,5 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> im_large = im.resize((400,300), resample=Image.NEAREST)
 >>> im_large.save('sappho8v0large.png')
 ```
-![sappho8v0large]()
+![sappho8v1large](https://user-images.githubusercontent.com/25837203/220943400-fec4abbb-0390-43eb-b745-bb7e133d786f.png)
+

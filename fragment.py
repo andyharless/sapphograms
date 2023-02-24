@@ -1,18 +1,8 @@
 import numpy as np
 from PIL import Image
 from math import sqrt, floor, ceil
+from utils import ACCENT_REMOVALS
 
-ACCENT_REMOVALS = {
-                  'Ἄ': 'Α', 
-                  'έ': 'ε',
-                  'Ἔ': 'Ε',
-                  '᾿': "'",
-                  'ἐ': 'ε',
-                  'ί': 'ι',
-                  'έ': 'ε',
-                  'ύ': 'υ'
-                  }
-                  
 def replace_by_dict(s, d):
     '''Do multiple replacements in a string, as specificed by a dictionary
     '''
@@ -62,7 +52,7 @@ def deal_with_gaps(s):
     for i in range(len_orig):
         if deletions[i]:
             del outc[i]
-            del hypotheical[i]
+            del hypothetical[i]
     return ''.join(outc), hypothetical
 
 def fix_line(line):
@@ -150,6 +140,7 @@ def best_aspect(array_length):
     return best
 
 def create_sapphogram(fp):
+    '''Create a visual encoding for a Sappho fragment'''
 
     #  Read and convert the data
     data = read_fragment(fp)

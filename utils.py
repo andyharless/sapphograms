@@ -10,7 +10,8 @@ ACCENT_REMOVALS = {
                   'έ': 'ε',  # cead in UTF-8 -> regular epsilon
                   'ί': 'ι',
                   'ό': 'ο',
-                  'ύ': 'υ'
+                  'ύ': 'υ',
+                  'ὦ': 'ω',  # e1bda6 in UTF-8 -> regular omega
                   }
 
 def utf(c):

@@ -61,11 +61,19 @@ def fix_line(line):
     # Strip lead/trailing spaces and remove accents (but keep newline at end)
     s = replace_by_dict(line.strip() + '\n', ACCENT_REMOVALS)
 
-    # Eliminate multiple spaces
-    doublespace = '  '
-    singlespace = ' '
-    while doublespace in s:
-        s = s.replace(doublespace, singlespace)
+    # Eliminate multiple spaces and multiple brackets
+    left2 = '[['
+    left = '['
+    right2 = ']]'
+    right = ']'
+    space2 = '  '
+    space = ' '
+    while space2 in s:
+        s = s.replace(space2, space)
+    while left2 in s:
+        s = s.replace(left2, left)
+    while right2 in s:
+        s = s.replace(right2, right)
         
     # Process gaps
     return deal_with_gaps(s)

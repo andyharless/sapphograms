@@ -1,3 +1,5 @@
+'''Utility functions and data associated with Sapphogram project'''
+
 ACCENT_REMOVALS = {
                   'Ἀ': 'Α',  # e1bc88 in UTF-8 -> capital alpha
                   'Ἄ': 'Α',  # e1bc8c in UTF-8 -> capital alpha
@@ -28,9 +30,14 @@ ACCENT_REMOVALS = {
                   }
 
 def utf(c):
+    '''Give the UTF heaxdecimal equivlaent of a quoted character'''
     return hex(int.from_bytes(bytes(c, 'utf-8'), 'big'))
     
 def showchars(fp):
+    '''
+    Display the characters from a file one-by-one on separate lines 
+    along with their sequence numbers and hexadecimal UTF codes.
+    '''
     with open(fp) as f:
         s = f.read()
     for i,c in enumerate(s):

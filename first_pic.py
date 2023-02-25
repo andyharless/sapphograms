@@ -1,3 +1,7 @@
+'''
+Used to create the first Sapphogram from the hex codes.
+'''
+
 from PIL import Image
 import numpy as np
 a = np.array([

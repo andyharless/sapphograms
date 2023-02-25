@@ -1,3 +1,9 @@
+'''
+Main program to create a Sapphogram.
+Output a "signle pixels only" picture, and enlarged picture,
+and a text file with the hexadecimal values of the pixels.
+'''
+
 from fragment import create_sapphogram
 from PIL import Image
 from current import FRAGMENT, DIMS

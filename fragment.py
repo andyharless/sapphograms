@@ -1,3 +1,5 @@
+'''Funcitons comprising the guts of the Sapphogram project'''
+
 import numpy as np
 from PIL import Image
 from math import sqrt, floor, ceil
@@ -179,9 +181,3 @@ def create_sapphogram(fp):
     # Create a picture
     return Image.fromarray(a.astype(np.uint8), 'RGB')
 
-if __name__=='__main__':
-    im = create_sapphogram('data/fragment8.txt')
-    im.save('output/sappho8v2small.png')
-    im_large = im.resize((500,300), resample=Image.NEAREST)
-    im_large.save('output/sappho8v2large.png')
-    

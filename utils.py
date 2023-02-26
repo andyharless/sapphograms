@@ -15,17 +15,21 @@ ACCENT_REMOVALS = {
                   'ὰ': 'α',  # e1bdb0 in UTF-8 -> regular alpha
                   'ᾶ': 'α',  # e1beb6 in UTF-8 -> regular alpha
                   'ά': 'α',  #   ceac in UTF-8 -> regular alpha
+                  'ᾳ': 'αι', # e1beb3 in UTF-8 -> alpha + iota
                   'ἐ': 'ε',  # e1bc90 in UTF-8 -> regular epsilon
                   'ἔ': 'ε',  # e1bc94 in UTF-8 -> regular epsilon
                   'ὲ': 'ε',  # e1bdb2 in UTF-8 -> regular epsilon
                   'έ': 'ε',  #   cead in UTF-8 -> regular epsilon
+                  'ἠ': 'η',  # e1bca0 in UTF-8 -> regular eta
                   'ὴ': 'η',  # e1bdb4 in UTF-8 -> regular eta
                   'ῃ': 'η',  # e1bf83 in UTF-8 -> regular eta
                   'ή': 'η',  #   ceae in UTF-8 -> regular eta
                   'ἰ': 'ι',  # e1bcb0 in UTF-8 -> regular iota
                   'ἴ': 'ι',  # e1bcb4 in UTF-8 -> regular iota
                   'ὶ': 'ι',  # e1bdb6 in UTF-8 -> regular iota
+                  'ῖ': 'ι',  # e1bf96 in UTF-8 -> regular iota
                   'ί': 'ι',  #   ceaf in UTF-8 -> regular iota
+                  'ὀ': 'ο',  # e1bd80 in UTF-8 -> regular omicron
                   'ὄ': 'ο',  # e1bd84 in UTF-8 -> regular omicron
                   'ό': 'ο',  #   cf8c in UTF-8 -> regular omicron
                   'ὐ': 'υ',  # e1bd90 in UTF-8 -> regular upsilon
@@ -36,6 +40,7 @@ ACCENT_REMOVALS = {
                   'ὠ': 'ω',  # e1bda0 in UTF-8 -> regular omega
                   'ὦ': 'ω',  # e1bda6 in UTF-8 -> regular omega
                   'ὼ': 'ω',  # e1bdbc in UTF-8 -> regular omega
+                  'ῶ': 'ω',  # e1bfb6 in UTF-8 -> regular omega
                   'ῳ': 'ωι', # e1bfb3 in UTF-8 -> omega + iota
                   'ώ': 'ω',  #   cf8e in UTF-8 -> regular omega 
                   }

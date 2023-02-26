@@ -1,4 +1,4 @@
 '''Parameters for the current run'''
 
-FRAGMENT = 112
-DIMS = 600, 400
+FRAGMENT = 22
+DIMS = 600, 500

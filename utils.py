@@ -4,7 +4,9 @@ ACCENT_REMOVALS = {
                   '᾿': "'",  # e1bebf in UTF-8 -> regular apostrophe
                   '’': "'",  # e28099 in UTF-8 -> regular apostrophe
                   '᾽': "'",  # e1bebd in UTF-8 -> regular apostrophe
+                  '΄': "'",  #   ce84 in UTF-8 -> regular apostrophe
                   '·': '.',  # c2b7 in UTF-8   -> regular dot
+                  '·': ':',  # ce87 in UTF-8    -> colon (which we ignore)
                   'ῤ': 'ρ',  # e1bfa4 in UTF-8 -> regular rho
                   'Ἀ': 'Α',  # e1bc88 in UTF-8 -> capital alpha
                   'Ἄ': 'Α',  # e1bc8c in UTF-8 -> capital alpha
@@ -33,6 +35,7 @@ ACCENT_REMOVALS = {
                   'ή': 'η',  #   ceae in UTF-8 -> regular eta
                   'ἰ': 'ι',  # e1bcb0 in UTF-8 -> regular iota
                   'ἴ': 'ι',  # e1bcb4 in UTF-8 -> regular iota
+                  'ἶ': 'ι',  # e1bcb6 in UTF-8 -> regular iota
                   'ὶ': 'ι',  # e1bdb6 in UTF-8 -> regular iota
                   'ί': 'ι',  # e1bdb7 in UTF-8 -> regular iota
                   'ῖ': 'ι',  # e1bf96 in UTF-8 -> regular iota

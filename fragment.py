@@ -84,7 +84,7 @@ def read_fragment(fp):
     '''Read a Sappho fragment and convert to Sapphogram sequence
     '''
 
-    CHAR_ARRAY = 'ΣΛΝΜΦΘΧΖΤΔΚΓΨΞΠΒ&\n ";,.\'ΥΙΟΕΡΑΩΗ'
+    CHAR_ARRAY = 'ΣΛΝΜΦΘΧΖΤΔΚΓΨΞΠΒ&\n ";,.\'ΥΙΟΕΡΑΩΗw'
 
     # Read input line by line
     with open(fp) as f:
@@ -120,6 +120,9 @@ def read_fragment(fp):
             n += (6 if cap else 7)
             n -= (2 if hypothetical else 0)
             n -= (4 if strange else 0)
+            if lastchar == 'Σ' and c == 'w':  # special case digamma in frag 1
+                n = int(result[-1]) + 4  # render sigma & clear non-strange bit
+                result = result[:-1]     # remove previously added character
             if n > 0xFF:
                 raise ValueError('bug: n is too big')
             result += bytes([n])

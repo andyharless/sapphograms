@@ -5,8 +5,9 @@ ACCENT_REMOVALS = {
                   '’': "'",  # e28099 in UTF-8 -> regular apostrophe
                   '᾽': "'",  # e1bebd in UTF-8 -> regular apostrophe
                   '΄': "'",  #   ce84 in UTF-8 -> regular apostrophe
-                  '·': '.',  # c2b7 in UTF-8   -> regular dot
-                  '·': ':',  # ce87 in UTF-8    -> colon (which we ignore)
+                  '·': '.',  #   c2b7 in UTF-8 -> regular dot
+                  '·': ':',  #   ce87 in UTF-8 -> colon (which we ignore)
+                  ';': ';',  #   cdbe in UTF-8 -> semicolon (question mark)
                   'ῤ': 'ρ',  # e1bfa4 in UTF-8 -> regular rho
                   'Ἀ': 'Α',  # e1bc88 in UTF-8 -> capital alpha
                   'Ἄ': 'Α',  # e1bc8c in UTF-8 -> capital alpha
@@ -27,6 +28,7 @@ ACCENT_REMOVALS = {
                   'έ': 'ε',  # e1bdb3 in UTF-8 -> regular epsilon
                   'έ': 'ε',  #   cead in UTF-8 -> regular epsilon
                   'ἠ': 'η',  # e1bca0 in UTF-8 -> regular eta
+                  'ἤ': 'η',  # e1bca4 in UTF-8 -> regular eta
                   'ἦ': 'η',  # e1bca6 in UTF-8 -> regular eta
                   'ὴ': 'η',  # e1bdb4 in UTF-8 -> regular eta
                   'ή': 'η',  # e1bdb5 in UTF-8 -> regular eta
@@ -40,6 +42,7 @@ ACCENT_REMOVALS = {
                   'ί': 'ι',  # e1bdb7 in UTF-8 -> regular iota
                   'ῖ': 'ι',  # e1bf96 in UTF-8 -> regular iota
                   'ί': 'ι',  #   ceaf in UTF-8 -> regular iota
+                  ' ͅ': 'ι',  #   cd85 in UTF-8 (combines with omega) -> iota
                   'ὀ': 'ο',  # e1bd80 in UTF-8 -> regular omicron
                   'ὄ': 'ο',  # e1bd84 in UTF-8 -> regular omicron
                   'ό': 'ο',  # e1bdb9 in UTF-8 -> regular omicron
@@ -47,6 +50,7 @@ ACCENT_REMOVALS = {
                   'ὐ': 'υ',  # e1bd90 in UTF-8 -> regular upsilon
                   'ὔ': 'υ',  # e1bd94 in UTF-8 -> regular upsilon
                   'ὖ': 'υ',  # e1bd96 in UTF-8 -> regular upsilon
+                  'ὺ': 'υ',  # e1bdba in UTF-8 -> regular upsilon
                   'ύ': 'υ',  # e1bdbb in UTF-8 -> regular upsilon
                   'ῦ': 'υ',  # e1bfa6 in UTF-8 -> regular upsilon
                   'ύ': 'υ',  #   cf8d in UTF-8 -> regular upsilon
@@ -59,6 +63,8 @@ ACCENT_REMOVALS = {
                   'ώ': 'ω',  #   cf8e in UTF-8 -> regular omega 
                   'ῳ': 'ωι', # e1bfb3 in UTF-8 -> omega + iota
                   'ῷ': 'ωι', # e1bfb7 in UTF-8 -> omega + iota
+                  'ϝ': 'σw', #   cf9d in UTF-8 (digamma) -> sigma + w
+                             # (specific to frag 1, shown as sigma by Dionyisus)
                   }
 
 def utf(c):

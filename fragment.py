@@ -80,15 +80,16 @@ def fix_line(line):
     # Process gaps
     return deal_with_gaps(s)
                 
-def read_fragment(fp):
-    '''Read a Sappho fragment and convert to Sapphogram sequence
+def read_fragment(fp, lines=None):
+    '''Read Sappho fragment and convert to byte sequence representing Sapphogram
     '''
 
     CHAR_ARRAY = 'ΣΛΝΜΦΘΧΖΤΔΚΓΨΞΠΒ&\n ";,.\'ΥΙΟΕΡΑΩΗw'
 
     # Read input line by line
-    with open(fp) as f:
-        lines = f.readlines()
+    if not lines:
+        with open(fp) as f:
+            lines = f.readlines()
         
     # Process and concatenate lines and associated flags
     flags = []
@@ -152,11 +153,11 @@ def best_aspect(array_length):
             best_npad = npad
     return best
 
-def create_sapphogram(fp):
+def create_sapphogram(fp, lines=None):
     '''Create a visual encoding for a Sappho fragment'''
 
     #  Read and convert the data
-    data = read_fragment(fp)
+    data = read_fragment(fp, lines)
     
     #  Pad final pixel if necessary
     if len(data) % 3:

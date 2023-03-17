@@ -28,6 +28,7 @@ ACCENT_REMOVALS = {
                   'έ': 'ε',  # e1bdb3 in UTF-8 -> regular epsilon
                   'έ': 'ε',  #   cead in UTF-8 -> regular epsilon
                   'ἠ': 'η',  # e1bca0 in UTF-8 -> regular eta
+                  'ἢ': 'η',  # e1bca2 in UTF-8 -> regular eta
                   'ἤ': 'η',  # e1bca4 in UTF-8 -> regular eta
                   'ἦ': 'η',  # e1bca6 in UTF-8 -> regular eta
                   'ὴ': 'η',  # e1bdb4 in UTF-8 -> regular eta
@@ -40,11 +41,13 @@ ACCENT_REMOVALS = {
                   'ἶ': 'ι',  # e1bcb6 in UTF-8 -> regular iota
                   'ὶ': 'ι',  # e1bdb6 in UTF-8 -> regular iota
                   'ί': 'ι',  # e1bdb7 in UTF-8 -> regular iota
+                  'ΐ': 'ι',  # e1bf93 in UTF-8 -> regular iota
                   'ῖ': 'ι',  # e1bf96 in UTF-8 -> regular iota
                   'ί': 'ι',  #   ceaf in UTF-8 -> regular iota
                   ' ͅ': 'ι',  #   cd85 in UTF-8 (combines with omega) -> iota
                   'ὀ': 'ο',  # e1bd80 in UTF-8 -> regular omicron
                   'ὄ': 'ο',  # e1bd84 in UTF-8 -> regular omicron
+                  'ὸ': 'ο',  # e1bdb8 in UTF-8 -> regular omicron
                   'ό': 'ο',  # e1bdb9 in UTF-8 -> regular omicron
                   'ό': 'ο',  #   cf8c in UTF-8 -> regular omicron
                   'ὐ': 'υ',  # e1bd90 in UTF-8 -> regular upsilon
@@ -66,6 +69,8 @@ ACCENT_REMOVALS = {
                   'ϝ': 'σw', #   cf9d in UTF-8 (digamma) -> sigma + w
                              # (specific to frag 1, shown as sigma by Dionyisus)
                   }
+                  
+
 
 def utf(c):
     '''Give the UTF heaxdecimal equivlaent of a quoted character'''
@@ -84,7 +89,7 @@ def showchars(fp):
 def newchars(fp):
     charlist = 'ΣΛΝΜΦΘΧΖΤΔΚΓΨΞΠΒ&\n ";,.\'ΥΙΟΕΡΑΩΗ' + ']['
     current_set = charlist + charlist.lower()
-    current_set += ''.join(ACCENT_REMOVALS.keys()) + 'ς-'
+    current_set += ''.join(ACCENT_REMOVALS.keys()) + 'ς- ̣'
     with open(fp) as f:
         s = f.read()
     for i,c in enumerate(s):

@@ -1,6 +1,6 @@
 '''Parameters for the current run'''
 
-FRAGMENT = 16
-DIMS = 750, 700
+FRAGMENT = 31
+DIMS = 800, 500
 LONGDIMS = 400, 3000
 GAP = 50

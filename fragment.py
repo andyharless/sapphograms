@@ -184,7 +184,8 @@ def create_sapphogram(fp, lines=None, orange=False):
     start_pad = padding // 2
     end_pad = padding - start_pad
     black = [0,0,0]
-    pixels = [black]*start_pad + pixels + [black]*end_pad
+    pad_color = [144,80,8] if orange else black
+    pixels = [pad_color]*start_pad + pixels + [pad_color]*end_pad
     
     channels = 3
     a = np.array(pixels).reshape(height, width, channels)

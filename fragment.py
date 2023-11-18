@@ -153,7 +153,7 @@ def best_aspect(array_length):
             best_npad = npad
     return best
 
-def create_sapphogram(fp, lines=None):
+def create_sapphogram(fp, lines=None, orange=False):
     '''Create a visual encoding for a Sappho fragment'''
 
     #  Read and convert the data
@@ -168,7 +168,14 @@ def create_sapphogram(fp, lines=None):
     #  Convert pixels to numeric form
     pixels = []
     for i in range(0, len(data), 3):
-        pixels.append([int(i) for i in data[i:i+3]])
+        if not orange:
+            pixels.append([int(i) for i in data[i:i+3]])
+        else:
+            red = (int(data[i+2]) >> 2) | 12
+            green = (int(data[i+1]) >> 1) | 8
+            blue = data[i]
+            pixels.append([blue, green, red])
+            
        
     #  Reshape pixels into a rectangle
     width, height, padding = best_aspect(len(pixels))

@@ -171,10 +171,10 @@ def create_sapphogram(fp, lines=None, orange=False):
         if not orange:
             pixels.append([int(i) for i in data[i:i+3]])
         else:
-            red = (int(data[i+2]) >> 2) | 12
-            green = (int(data[i+1]) >> 1) | 8
-            blue = data[i]
-            pixels.append([blue, green, red])
+            red = (int(data[i+2]) >> 2) | 192
+            green = (int(data[i+1]) >> 2) | 64
+            blue = (int(data[i]) >> 1) & 128
+            pixels.append([red, green, blue])
             
        
     #  Reshape pixels into a rectangle

@@ -4,6 +4,7 @@ import numpy as np
 from PIL import Image
 from math import sqrt, floor, ceil
 from utils import ACCENT_REMOVALS
+from config import TANG
 
 def replace_by_dict(s, d):
     '''Do multiple replacements in a string, as specificed by a dictionary
@@ -153,7 +154,23 @@ def best_aspect(array_length):
             best_npad = npad
     return best
 
-def create_sapphogram(fp, lines=None, orange=False):
+def chrome_shift(value, shift, channel):
+    '''
+    Shift intensity of one channel of a pixel
+        value:    original intensity
+        shift:    3-tuple of (bitshift, or-value) pairs for R, G, and B
+        channel:  channel to which 'value' refers
+        return:   shifted intensity value
+    '''
+    
+    ch = {'R': 0, 'G': 1, 'B':2}[channel]
+    sh = shift[ch]
+    shifter = sh[0]
+    orshift = 8 - shifter
+    orval = sh[1] << orshift
+    return (int(value) >> shifter) | orval
+   
+def create_sapphogram(fp, lines=None, orange=False, shift=None):
     '''Create a visual encoding for a Sappho fragment'''
 
     #  Read and convert the data
@@ -171,9 +188,10 @@ def create_sapphogram(fp, lines=None, orange=False):
         if not orange:
             pixels.append([int(i) for i in data[i:i+3]])
         else:
-            red = (int(data[i+2]) >> 2) | 192
-            green = (int(data[i+1]) >> 2) | 64
-            blue = (int(data[i]) >> 3) & 31
+            shift = TANG
+            red = chrome_shift(data[i+2], shift, 'R')
+            green = chrome_shift(data[i+1], shift, 'G')
+            blue = chrome_shift(data[i], shift, 'B')
             pixels.append([red, green, blue])
             
        

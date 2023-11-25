@@ -27,6 +27,6 @@ for s, h in zip(sapphograms, newheights):
     full_image.paste(s.resize(dims, resample=Image.NEAREST), location)
     location = (0, location[1]+h+GAP)
 
-full_image.save(f'output/sappho{fragment}v1small.png')
+full_image.save(f'output/sappho{fragment}v6small.png')
 im_large = full_image.resize(LONGDIMS, resample=Image.NEAREST)
-im_large.save(f'output/sappho{fragment}v1large.png')
+im_large.save(f'output/sappho{fragment}v6large.png')

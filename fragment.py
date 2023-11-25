@@ -173,7 +173,7 @@ def create_sapphogram(fp, lines=None, orange=False):
         else:
             red = (int(data[i+2]) >> 2) | 192
             green = (int(data[i+1]) >> 2) | 64
-            blue = (int(data[i]) >> 1) & 128
+            blue = (int(data[i]) >> 3) & 31
             pixels.append([red, green, blue])
             
        

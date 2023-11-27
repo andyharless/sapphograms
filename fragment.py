@@ -202,7 +202,14 @@ def create_sapphogram(fp, lines=None, orange=False, shift=None):
     start_pad = padding // 2
     end_pad = padding - start_pad
     black = [0,0,0]
-    pad_color = [144,80,8] if orange else black
+    if shift is not None:
+        dark_red = (chrome_shift(0x80, shift, 'R') >> 1) | 0x0F
+        dark_green = (chrome_shift(0x80, shift, 'G') >> 1) | 0x0F
+        dark_blue = (chrome_shift(0x80, shift, 'B') >> 1) | 0x0F
+    pad_color = [144,80,8] if orange else \
+                black if shift is None else \
+                [dark_red, dark_green, dark_blue]
+                
     pixels = [pad_color]*start_pad + pixels + [pad_color]*end_pad
     
     channels = 3

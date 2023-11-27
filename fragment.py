@@ -185,10 +185,10 @@ def create_sapphogram(fp, lines=None, orange=False, shift=None):
     #  Convert pixels to numeric form
     pixels = []
     for i in range(0, len(data), 3):
-        if not orange:
+        if shift is None and not orange:
             pixels.append([int(i) for i in data[i:i+3]])
         else:
-            shift = TANG
+            shift = TANG if orange else shift
             red = chrome_shift(data[i+2], shift, 'R')
             green = chrome_shift(data[i+1], shift, 'G')
             blue = chrome_shift(data[i], shift, 'B')

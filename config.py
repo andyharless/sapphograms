@@ -4,3 +4,4 @@
 # Second element of each pair refers to what to replace those bits with
 
 TANG = ((2, 0b11), (2, 0b01), (3, 0b000))   # Orange
+VIOL = ((2, 0b10), (2, 0b01), (2, 0b11))    # Violet

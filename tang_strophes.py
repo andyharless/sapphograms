@@ -1,8 +1,11 @@
 from PIL import Image
 from fragment import create_sapphogram
 from current import FRAGMENT, LONGDIMS, GAP
+from config import TANG
 import math
 import numpy as np
+
+v = '8'
 
 fragment = str(FRAGMENT)
 fp = f'data/fragment{fragment}greek.txt'
@@ -11,7 +14,7 @@ with open(fp) as f:
     
 strophes = poem.split('\n\n')
 
-sapphograms = [create_sapphogram(None, strophe, orange=True) 
+sapphograms = [create_sapphogram(None, strophe, shift=TANG) 
                 for strophe in strophes]
 
 widths, heights = zip(*[im.size for im in sapphograms])
@@ -27,6 +30,6 @@ for s, h in zip(sapphograms, newheights):
     full_image.paste(s.resize(dims, resample=Image.NEAREST), location)
     location = (0, location[1]+h+GAP)
 
-full_image.save(f'output/sappho{fragment}v6small.png')
+full_image.save(f'output/sappho{fragment}v{v}raw.png')
 im_large = full_image.resize(LONGDIMS, resample=Image.NEAREST)
-im_large.save(f'output/sappho{fragment}v6large.png')
+im_large.save(f'output/sappho{fragment}v{v}sized.png')
